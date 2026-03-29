@@ -1,6 +1,22 @@
 import streamlit as st
 import pandas as pd
 import os
+# 2. Professional Branding
+st.set_page_config(page_title="Hirenec Solutions | Live Portal", layout="wide")
+
+# Small logo in the corner and Bold Title
+col1, col2 = st.columns([1, 4])
+with col1:
+    st.image("logo.png", width=150) # This shrinks the logo
+with col2:
+    st.markdown("<h1 style='margin-top: 20px;'>HIRENEC SOLUTIONS</h1>", unsafe_allow_html=True)
+
+st.markdown('''
+    <style>
+    .stApp { background: #0a192f; color: white; }
+    .card { background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; }
+    </style>
+    ''', unsafe_allow_html=True)
 
 # 1. Permanent Database Logic (CSV files)
 def load_data(filename, columns):
