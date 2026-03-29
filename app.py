@@ -1,184 +1,179 @@
 import streamlit as st
 
 # 1. PAGE SETUP
-st.set_page_config(page_title="Hirenec Solutions | Executive Search", page_icon="🏢", layout="wide")
+st.set_page_config(page_title="Hirenec Solutions | Official Portal", page_icon="💼", layout="wide")
 
-# 2. THE DESIGN ENGINE (Every detail polished)
+# 2. THE PREMIUM DESIGN ENGINE (The "Wow" Factor)
 st.markdown("""
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:wght@700&display=swap');
+    /* Modern, High-End Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;800&family=Playfair+Display:wght@700&display=swap');
 
-    /* Global Foundation */
+    /* Global Body Styling */
     .stApp {
-        background: #fcfcfc;
+        background-color: #FFFFFF;
         font-family: 'Outfit', sans-serif;
+        color: #1E1E1E;
     }
 
-    /* THE LOGO & NAV HEADER */
-    .nav-header {
-        background: #001f3f;
-        padding: 40px 80px;
-        border-bottom: 5px solid #D4AF37;
-        text-align: center;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    /* THE COMPANY LOGO & HEADER SECTION */
+    .header-banner {
+        background: linear-gradient(90deg, #002349 0%, #004080 100%);
+        padding: 50px 80px;
+        color: white;
+        border-bottom: 6px solid #C5A059; /* Elegant Gold Accent */
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        margin-bottom: 40px;
     }
-    .logo-badge {
-        background: #D4AF37;
-        color: #001f3f;
+    
+    .logo-square {
+        background: #C5A059;
+        color: #002349;
+        font-family: 'Outfit', sans-serif;
         font-weight: 800;
         font-size: 32px;
-        padding: 10px 25px;
-        border-radius: 4px;
-        display: inline-block;
-        margin-bottom: 15px;
+        width: 80px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
-    .main-brand {
-        font-size: 50px;
+
+    .brand-title {
+        font-family: 'Outfit', sans-serif;
+        font-size: 52px;
         font-weight: 800;
-        color: white;
-        letter-spacing: -1.5px;
         margin: 0;
+        letter-spacing: -1.5px;
+        line-height: 1;
     }
-    .tagline {
-        color: #D4AF37;
-        letter-spacing: 5px;
-        font-weight: 600;
-        text-transform: uppercase;
+
+    .brand-tagline {
         font-size: 14px;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: #C5A059;
+        font-weight: 600;
         margin-top: 10px;
     }
 
-    /* HERO CONTENT */
-    .hero-container {
-        text-align: center;
-        padding: 100px 10%;
-        background: white;
-    }
-    .hero-title {
-        font-family: 'Playfair Display', serif;
-        font-size: 64px;
-        color: #001f3f;
-        line-height: 1.1;
-        margin-bottom: 30px;
-    }
-
-    /* STAT CARDS - VISIBLE & SPOT ON */
-    .stat-row {
+    /* THE STAT CARDS (Fixed Visibility) */
+    .stat-container {
         display: flex;
-        justify-content: center;
-        gap: 30px;
-        margin-top: -50px;
-        margin-bottom: 60px;
+        gap: 20px;
+        margin: 20px 0;
     }
     .stat-card {
-        background: white;
-        width: 250px;
+        background: #F8F9FA;
+        flex: 1;
         padding: 40px 20px;
-        border-radius: 8px;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.06);
-        border: 1px solid #eee;
+        border-radius: 15px;
         text-align: center;
+        border: 1px solid #E0E0E0;
+        transition: 0.3s;
     }
-    .stat-val { color: #001f3f; font-size: 44px; font-weight: 800; }
-    .stat-lab { color: #D4AF37; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; }
+    .stat-card:hover { transform: translateY(-5px); border-color: #C5A059; }
+    .stat-number { color: #002349; font-size: 42px; font-weight: 800; }
+    .stat-label { color: #666; font-weight: 600; text-transform: uppercase; font-size: 12px; letter-spacing: 1px; }
 
-    /* DIRECTOR BOX */
-    .director-section {
-        background: #001f3f;
-        border-radius: 12px;
-        padding: 60px;
+    /* REVIEWS SECTION */
+    .review-box {
+        background: #002349;
         color: white;
-        margin: 50px 10%;
-        display: flex;
-        align-items: center;
-        gap: 50px;
+        padding: 40px;
+        border-radius: 20px;
+        margin: 40px 0;
     }
-    .director-info h2 { font-family: 'Playfair Display', serif; color: #D4AF37; font-size: 42px; margin: 0; }
-    .director-info p { font-size: 18px; opacity: 0.9; line-height: 1.8; }
+    .testimonial {
+        font-style: italic;
+        font-size: 18px;
+        margin-bottom: 15px;
+        border-left: 4px solid #C5A059;
+        padding-left: 20px;
+    }
 
-    /* SIDEBAR NAV */
-    [data-testid="stSidebar"] { background-color: #f8f9fa !important; border-right: 1px solid #ddd; }
-    .stRadio p { font-size: 20px !important; font-weight: 600 !important; color: #001f3f !important; }
+    /* DIRECTOR SECTION */
+    .director-card {
+        background: #FFFFFF;
+        border-radius: 20px;
+        padding: 30px;
+        border: 1px solid #E0E0E0;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    /* SIDEBAR NAVIGATION */
+    [data-testid="stSidebar"] { background-color: #F0F2F6 !important; }
+    .stRadio p { font-size: 18px !important; font-weight: 700 !important; color: #002349 !important; }
     </style>
     """, unsafe_allow_html=True)
 
-# 3. HEADER
+# 3. TOP BANNER & LOGO
 st.markdown("""
-    <div class="nav-header">
-        <div class="logo-badge">HS</div>
-        <h1 class="main-brand">HIRENEC SOLUTIONS</h1>
-        <p class="tagline">Precision | People | Performance</p>
+    <div class="header-banner">
+        <div class="logo-square">HS</div>
+        <div>
+            <h1 class="brand-title">HIRENEC SOLUTIONS</h1>
+            <div class="brand-tagline">Precision | People | Performance</div>
+        </div>
     </div>
     """, unsafe_allow_html=True)
 
-# 4. SIDEBAR
+# 4. SIDEBAR MENU
 with st.sidebar:
-    st.markdown("<br><br>", unsafe_allow_html=True)
-    page = st.radio("PORTAL MENU", ["HOME", "JOB BOARD", "RECRUITER HUB", "ADMIN PANEL"])
+    st.markdown("### 🏢 NAVIGATION")
+    choice = st.radio("Menu", ["HOME", "JOB BOARD", "RECRUITER HUB", "ADMIN PANEL"], label_visibility="collapsed")
     st.divider()
-    st.caption("Official Executive Portal | 2026")
+    st.info("Directing professional growth since 2026.")
 
-# 5. PAGE LOGIC
-if page == "HOME":
-    # Hero
-    st.markdown("""
-        <div class="hero-container">
-            <h1 class="hero-title">Elite Recruitment for <br>Industry Leaders.</h1>
-            <p style="font-size:20px; color:#666; max-width:700px; margin: 0 auto;">
-                Hirenec Solutions is a premier executive search firm based in Bangalore. 
-                We specialize in connecting high-performance professionals with world-class organizations.
-            </p>
-        </div>
-    """, unsafe_allow_html=True)
+# 5. PAGE CONTENT
+if choice == "HOME":
+    # Introduction
+    st.markdown("### Professional Executive Recruitment & Search")
+    st.write("Welcome to the official portal of **Hirenec Solutions Pvt Ltd**. We bridge the gap between world-class talent and industry-leading organizations with an unfiltered, honest approach to recruitment.")
 
-    # Stats
-    st.markdown("""
-        <div class="stat-row">
-            <div class="stat-card">
-                <div class="stat-val">10K+</div>
-                <div class="stat-lab">Candidates</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-val">500+</div>
-                <div class="stat-lab">Clients</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-val">98%</div>
-                <div class="stat-lab">Retention</div>
-            </div>
-        </div>
-    """, unsafe_allow_html=True)
+    # Stat Cards (Fixed "Blank" issue)
+    st.write("##")
+    st.markdown('<div class="stat-container">', unsafe_allow_html=True)
+    c1, c2, c3 = st.columns(3)
+    with c1:
+        st.markdown('<div class="stat-card"><div class="stat-number">10K+</div><div class="stat-label">Verified Candidates</div></div>', unsafe_allow_html=True)
+    with c2:
+        st.markdown('<div class="stat-card"><div class="stat-number">500+</div><div class="stat-label">Corporate Clients</div></div>', unsafe_allow_html=True)
+    with c3:
+        st.markdown('<div class="stat-card"><div class="stat-number">98%</div><div class="stat-label">Retention Rate</div></div>', unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
 
     # Director Section
-    st.markdown("""
-        <div class="director-section">
-            <div class="director-info">
-                <h2>Director Juliet Jackson</h2>
-                <p style="color:#D4AF37; font-weight:700; text-transform:uppercase; letter-spacing:2px; font-size:14px;">Founder & Strategic Lead</p>
-                <p>
-                    With over a decade of expertise in international recruitment, Juliet Jackson 
-                    has built Hirenec Solutions into a trusted name for honest, data-driven hiring. 
-                    Based in Bangalore, the firm serves as a bridge for talent looking to excel in 
-                    global markets.
-                </p>
-            </div>
-        </div>
-    """, unsafe_allow_html=True)
-
-    # Reviews
     st.write("##")
-    st.markdown("<h2 style='text-align:center; color:#001f3f; font-family:Playfair Display;'>Candidate Experiences</h2>", unsafe_allow_html=True)
-    c1, c2 = st.columns(2)
-    with c1:
-        st.info("**Arjun M.** | *Senior Software Engineer*\n\n'The most professional recruitment experience I've had in India. Juliet's team truly understands your career goals.'")
-    with c2:
-        st.info("**Sarah L.** | *Operations Manager*\n\n'Hirenec managed my transition into a US-based firm perfectly. Their precision is unmatched.'")
+    col_img, col_txt = st.columns([1, 2])
+    with col_img:
+        # High-quality corporate image placeholder
+        st.image("https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500", caption="Director Juliet Jackson")
+    with col_txt:
+        st.markdown("""
+            <div class="director-card">
+                <h2 style="color:#002349; font-family:'Playfair Display';">Juliet Jackson</h2>
+                <p style="color:#C5A059; font-weight:700; text-transform:uppercase; margin-top:-10px;">Director & Founder</p>
+                <p>Based in the heart of <b>Bangalore</b>, Juliet Jackson has built Hirenec Solutions into a premier gateway for global recruitment. 
+                Her vision focuses on precision-driven hiring that fuels both candidate performance and organizational growth.</p>
+                <hr style="border:0.5px solid #eee;">
+                <p><i>"We don't just fill seats; we provide the human capital that drives global industries."</i></p>
+            </div>
+        """, unsafe_allow_html=True)
 
-# 6. FOOTER
-st.markdown("""
-    <div style="background:#001f3f; padding:50px; color:white; text-align:center; margin-top:100px;">
-        <p>📍 The Estate, Dickenson Road, Bangalore</p>
-        <p>© 2026 Hirenec Solutions Pvt Ltd | Official Portal</p>
-    </div>
-    """, unsafe_allow_html=True)
+    # Candidate Feedback Section
+    st.write("##")
+    st.markdown("### 💬 Candidate Feedback & Reviews")
+    rev1, rev2 = st.columns(2)
+    with rev1:
+        st.markdown("""<div class="review-box">
+            <p class="testimonial">"The most professional recruitment experience I've had. They understood my skills perfectly and placed me in a top firm within weeks."</p>
+            <p><b>— Rajesh K.</b> | Senior Developer</p>
+        </div>""", unsafe_allow_html=True)
+    with rev2:
+        st.markdown("""
 
