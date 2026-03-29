@@ -17,9 +17,11 @@ app_db = load_data("applications.csv", ["Name", "Email", "Job", "Status"])
 
 # 2. Professional Branding
 st.set_page_config(page_title="Hirenec Solutions | Live Portal", layout="wide")
-col1, col2 = st.columns([4, 1])
-with col2:
-    st.image("logo.png")
+# Create three columns to put the logo in the middle (col2)
+left_gap, center_col, right_gap = st.columns([1, 2, 1])
+with center_col:
+    st.image("logo.png", use_container_width=True)
+    st.markdown("<h1 style='text-align: center; color: white;'>HIRENEC SOLUTIONS</h1>", unsafe_allow_html=True)
 st.markdown('''
     <style>
     .stApp { background: #0a192f; color: white; }
@@ -29,8 +31,7 @@ st.markdown('''
     ''', unsafe_allow_html=True)
 
 # 3. Sidebar Navigation
-if os.path.exists("logo.png"):
-    st.sidebar.image("logo.png", use_container_width=True)
+
 page = st.sidebar.radio("Hirenec Menu", ["🏠 Home", "🔍 Job Board", "🏢 Recruiter Hub", "⚙️ Admin"])
 
 # 4. Page Logic
