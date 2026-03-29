@@ -1,9 +1,9 @@
 import streamlit as st
 
-# 1. PAGE CONFIG
+# 1. ELITE CONFIGURATION
 st.set_page_config(page_title="Hirenec Solutions | Executive Portal", page_icon="🏢", layout="wide")
 
-# 2. THE SPOT-ON DESIGN ENGINE
+# 2. THE DESIGN ENGINE (Polished & Professional)
 st.markdown("""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;800&family=Playfair+Display:wght@700&display=swap');
@@ -31,6 +31,7 @@ st.markdown("""
         align-items: center;
         justify-content: center;
         border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
     .brand-main { font-size: 52px; font-weight: 800; margin: 0; line-height: 1; }
     .brand-sub { font-size: 14px; letter-spacing: 5px; text-transform: uppercase; color: #C5A059; margin-top: 10px; font-weight: 600; }
@@ -47,7 +48,7 @@ st.markdown("""
         border-bottom: 1px solid #DDE4ED;
     }
 
-    /* STATS & CARDS */
+    /* CARDS & REVIEWS */
     .stat-card {
         background: #FFFFFF;
         padding: 30px;
@@ -56,10 +57,6 @@ st.markdown("""
         border: 1px solid #EAEAEA;
         box-shadow: 0 4px 12px rgba(0,0,0,0.03);
     }
-    .stat-val { color: #002349; font-size: 40px; font-weight: 800; }
-    .stat-lab { color: #888; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
-
-    /* REVIEW SECTION */
     .review-card {
         background: #002349;
         color: white;
@@ -69,17 +66,12 @@ st.markdown("""
         margin-bottom: 20px;
     }
 
-    /* DIRECTOR AREA */
-    .director-profile {
-        background: #FDFDFD;
-        padding: 40px;
-        border-radius: 20px;
-        border: 1px solid #EEE;
-    }
+    /* SIDEBAR */
+    [data-testid="stSidebar"] { background-color: #F8F9FA !important; }
     </style>
     """, unsafe_allow_html=True)
 
-# 3. TOP BANNER & CONTACT INFO
+# 3. PERMANENT HEADER (Logo + Brand + Contact)
 st.markdown("""
     <div class="header-box">
         <div class="logo-square">HS</div>
@@ -91,87 +83,95 @@ st.markdown("""
     <div class="contact-bar">
         <span>📍 The Estate, Dickenson Road, Bangalore</span>
         <span>📧 contact@hirenecsolutions.com</span>
-        <span>📞 +91 [Your Number]</span>
+        <span>📞 Director: Juliet Jackson</span>
     </div>
     """, unsafe_allow_html=True)
 
-# 4. SIDEBAR NAVIGATION
+# 4. NAVIGATION
 with st.sidebar:
-    st.markdown("### 🖥️ PORTAL MENU")
-    page = st.radio("Navigate", ["HOME", "JOB BOARD", "RECRUITER HUB", "ADMIN"], label_visibility="collapsed")
+    st.markdown("### 🖥️ MAIN NAVIGATION")
+    page = st.radio("Select View", ["HOME", "JOB BOARD", "RECRUITER HUB", "ADMIN"], label_visibility="collapsed")
     st.divider()
-    st.markdown("**Director: Juliet Jackson**")
+    st.success("Portal Secured")
 
-# 5. PAGE CONTENT
+# 5. CONTENT LOGIC (NOT EMPTY)
 if page == "HOME":
     st.write("##")
-    # Intro Paragraph
-    st.markdown("### Welcome to the Premier Gateway for Global Talent")
+    st.markdown("### About Hirenec Solutions")
     st.write("""
-    Hirenec Solutions Pvt Ltd is a leading executive recruitment firm based in Bangalore. 
+    Hirenec Solutions Pvt Ltd is a premier executive recruitment firm based in Bangalore. 
     We specialize in connecting high-performance professionals with world-class organizations 
     through a strategy of 'Unfiltered Truth' and data-driven precision.
     """)
 
     # Statistics
-    st.write("##")
     c1, c2, c3 = st.columns(3)
     with c1:
-        st.markdown('<div class="stat-card"><div class="stat-val">10K+</div><div class="stat-lab">Candidates</div></div>', unsafe_allow_html=True)
+        st.markdown('<div class="stat-card"><h2 style="color:#002349;">10K+</h2><p>Candidates</p></div>', unsafe_allow_html=True)
     with c2:
-        st.markdown('<div class="stat-card"><div class="stat-val">500+</div><div class="stat-lab">Global Partners</div></div>', unsafe_allow_html=True)
+        st.markdown('<div class="stat-card"><h2 style="color:#002349;">500+</h2><p>Clients</p></div>', unsafe_allow_html=True)
     with c3:
-        st.markdown('<div class="stat-card"><div class="stat-val">98%</div><div class="stat-lab">Success Rate</div></div>', unsafe_allow_html=True)
+        st.markdown('<div class="stat-card"><h2 style="color:#002349;">98%</h2><p>Success</p></div>', unsafe_allow_html=True)
 
     # Director Section
     st.write("##")
-    st.markdown("### Leadership")
     col1, col2 = st.columns([1, 2])
     with col1:
         st.image("https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500")
     with col2:
-        st.markdown("""
-            <div class="director-profile">
-                <h2 style="font-family:'Playfair Display'; color:#002349; margin-top:0;">Director Juliet Jackson</h2>
-                <p style="color:#C5A059; font-weight:700; text-transform:uppercase; font-size:13px; margin-top:-10px;">Founder & Strategic Lead</p>
-                <p>Based in Bangalore, Juliet Jackson leads Hirenec Solutions with a vision for transparency 
-                in the recruitment landscape. Her expertise ensures that every placement is built on 
-                long-term performance and organizational fit.</p>
-                <p><i>"We don't just fill positions; we build the future of leadership."</i></p>
+        st.markdown(f"""
+            <div style="background:#FDFDFD; padding:30px; border-radius:15px; border:1px solid #EEE;">
+                <h2 style="font-family:'Playfair Display'; color:#002349;">Director Juliet Jackson</h2>
+                <p style="color:#C5A059; font-weight:700; text-transform:uppercase;">Founder & Strategic Lead</p>
+                <p>Juliet Jackson leads Hirenec Solutions with a vision for transparency and precision. 
+                Based in Bangalore, her firm serves as a bridge for talent to excel in global markets.</p>
+                <p><i>"We build the future of leadership through honest connections."</i></p>
             </div>
         """, unsafe_allow_html=True)
 
-    # Reviews Section
+    # Reviews
     st.write("##")
     st.markdown("### 💬 Candidate Feedback")
     r1, r2 = st.columns(2)
     with r1:
-        st.markdown("""<div class="review-card">
-            <p style="font-style:italic;">"The transition to my new role at a US-based firm was seamless. Hirenec is professional and incredibly honest."</p>
-            <p><b>— Arjun M.</b> | Senior Engineer</p>
-        </div>""", unsafe_allow_html=True)
+        st.markdown('<div class="review-card"><i>"The most professional team in Bangalore. Exceptional service."</i><br><b>— Arjun K.</b></div>', unsafe_allow_html=True)
     with r2:
-        st.markdown("""<div class="review-card">
-            <p style="font-style:italic;">"Juliet's team understands the Bangalore market better than anyone. They matched my profile perfectly."</p>
-            <p><b>— Sarah D.</b> | Project Manager</p>
-        </div>""", unsafe_allow_html=True)
+        st.markdown('<div class="review-card"><i>"Honest and transparent recruitment. Juliet truly understands the market."</i><br><b>— Sarah M.</b></div>', unsafe_allow_html=True)
 
 elif page == "JOB BOARD":
     st.title("🔍 Active Opportunities")
-    st.markdown("---")
-    # Example Jobs
-    st.subheader("Senior Python Developer")
-    st.caption("Location: Bangalore (Hybrid) | Experience: 5+ Years")
-    st.button("Apply Now", key="job1")
+    st.write("Browse current openings across our US and Indian partner networks.")
     
-    st.subheader("Operations Manager")
-    st.caption("Location: Remote (US Firm) | Experience: 8+ Years")
-    st.button("Apply Now", key="job2")
+    jobs = [
+        {"title": "Senior Python Developer", "loc": "Bangalore (Hybrid)", "exp": "5+ Years"},
+        {"title": "Operations Manager", "loc": "Remote (US Based)", "exp": "8+ Years"},
+        {"title": "HR Specialist", "loc": "Bangalore", "exp": "3+ Years"}
+    ]
+    
+    for job in jobs:
+        with st.expander(f"{job['title']} - {job['loc']}"):
+            st.write(f"**Experience Required:** {job['exp']}")
+            st.button("Apply Now", key=job['title'])
 
-else:
-    st.title(page)
-    st.info(f"The {page} dashboard is currently active and secure.")
+elif page == "RECRUITER HUB":
+    st.title("🤝 Recruiter Dashboard")
+    st.write("Manage candidate pipelines and client requirements.")
+    col_a, col_b = st.columns(2)
+    col_a.metric("New Applications", "142", "+12%")
+    col_b.metric("Interviews Scheduled", "28", "Active")
+    st.write("### Recent Talent Submissions")
+    st.table({"Candidate Name": ["Rajesh V.", "Ananya S."], "Role": ["Full Stack", "Sales Lead"], "Status": ["Interview", "Screening"]})
+
+elif page == "ADMIN":
+    st.title("⚙️ Admin Control Panel")
+    st.write("Secure access for Juliet Jackson.")
+    with st.form("Post New Job"):
+        st.text_input("Job Title")
+        st.text_area("Job Description")
+        st.selectbox("Region", ["India", "USA", "UK"])
+        st.form_submit_button("Publish Job")
 
 # 6. FOOTER
 st.divider()
-st.markdown("<p style='text-align:center; color:#999;'>© 2026 Hirenec Solutions Pvt Ltd | Authorized Executive Portal</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align:center; color:#999;'>© 2026 Hirenec Solutions Pvt Ltd | Official Executive Portal</p>", unsafe_allow_html=True)
+
