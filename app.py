@@ -84,7 +84,21 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# 3. HEADER (FIXED FOR YOUR LOGO.PNG)
+# 3. HEADER (POINTING TO YOUR LOGO.PNG)
+st.markdown(f"""
+    <div class="main-header">
+        <div class="brand-text">
+            <h1>HIRENEC SOLUTIONS LIMITED</h1>
+            <p>Precision | People | Performance</p>
+        </div>
+        <div style="background: white; padding: 10px; border-radius: 8px; display: flex; align-items: center;">
+            <img src="https://raw.githubusercontent.com/Hirenec/Portal/main/logo.png" width="150" onerror="this.src='https://via.placeholder.com/150x80?text=LOGO.PNG+NOT+FOUND'">
+        </div>
+    </div>
+    <div style="background:#F1F3F5; padding:15px 50px; border-bottom:2px solid #002349; font-weight:800; color:#002349; font-size:16px;">
+        📍 Bangalore HQ | 📧 contact@hirenecsolutions.com | 👤 Director: Juliet Jackson
+    </div>
+""", unsafe_allow_html=True)
 st.markdown("""
     <div class="main-header">
         <div class="brand-text">
