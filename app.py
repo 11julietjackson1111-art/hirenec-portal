@@ -29,8 +29,8 @@ st.markdown('''
     ''', unsafe_allow_html=True)
 
 # 3. Sidebar Navigation
-if os.path.exists("116925.jpg"):
-    st.sidebar.image("116925.jpg", use_container_width=True)
+if os.path.exists("logo.png"):
+    st.sidebar.image("logo.png", use_container_width=True)
 page = st.sidebar.radio("Hirenec Menu", ["🏠 Home", "🔍 Job Board", "🏢 Recruiter Hub", "⚙️ Admin"])
 
 # 4. Page Logic
