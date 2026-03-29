@@ -1,218 +1,169 @@
 import streamlit as st
 import pandas as pd
-from datetime import datetime
 
-# 1. PAGE SETUP
-st.set_page_config(page_title="Hirenec Solutions Limited | Executive Portal", page_icon="🏢", layout="wide")
+# 1. CRITICAL CONFIGURATION
+st.set_page_config(page_title="Hirenec Solutions Limited", page_icon="🏢", layout="wide")
 
-# 2. THE SPOT-ON DESIGN ENGINE (CSS)
+# 2. THE VISIBILITY ENGINE (High-Contrast & Sharp Fonts)
 st.markdown("""
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;800&family=Playfair+Display:wght@700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:wght@700&display=swap');
 
-    .stApp { background-color: #FFFFFF; font-family: 'Outfit', sans-serif; }
+    /* Background & Global Font */
+    .stApp { background-color: #FFFFFF; font-family: 'Inter', sans-serif; }
 
-    /* HEADER: LOGO ON THE RIGHT */
-    .header-box {
-        background: #002349;
-        padding: 40px 80px;
+    /* SPOT ON HEADER - LOGO ON RIGHT */
+    .main-header {
+        background: #002349; 
+        padding: 50px 80px;
         color: white;
-        border-bottom: 6px solid #C5A059;
-        display: flex;
-        justify-content: space-between; /* Pushes Logo to Right */
-        align-items: center;
-    }
-    .brand-group { display: flex; flex-direction: column; }
-    .brand-main { font-size: 45px; font-weight: 800; margin: 0; line-height: 1; letter-spacing: -1px; }
-    .brand-sub { font-size: 14px; letter-spacing: 5px; text-transform: uppercase; color: #C5A059; margin-top: 10px; font-weight: 600; }
-    
-    .logo-square {
-        background: #C5A059;
-        color: #002349;
-        font-weight: 800;
-        font-size: 32px;
-        width: 80px;
-        height: 80px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    }
-
-    /* CONTACT STRIP */
-    .contact-bar {
-        background: #F0F4F8;
-        padding: 12px 80px;
+        border-bottom: 8px solid #C5A059;
         display: flex;
         justify-content: space-between;
-        font-size: 13px;
-        color: #002349;
-        font-weight: 600;
-        border-bottom: 1px solid #DDE4ED;
+        align-items: center;
+    }
+    .brand-text h1 { 
+        font-size: 55px; 
+        font-weight: 900; 
+        margin: 0; 
+        letter-spacing: -2px; 
+        text-transform: uppercase;
+    }
+    .brand-text p { 
+        font-size: 16px; 
+        letter-spacing: 6px; 
+        color: #C5A059; 
+        font-weight: 700; 
+        margin-top: 5px;
+    }
+    .logo-container {
+        border: 3px solid #C5A059;
+        padding: 10px;
+        background: white;
+        border-radius: 10px;
     }
 
-    /* CARDS */
-    .stat-card {
-        background: #FFFFFF;
-        padding: 25px;
-        border-radius: 12px;
+    /* HIGH VISIBILITY NAVIGATION */
+    [data-testid="stSidebar"] { background-color: #F0F2F6 !important; border-right: 2px solid #DDE4ED; }
+    .stRadio > label { font-size: 22px !important; font-weight: 800 !important; color: #002349 !important; }
+
+    /* DASHBOARD CARDS */
+    .metric-card {
+        background: #002349;
+        color: white;
+        padding: 30px;
+        border-radius: 15px;
         text-align: center;
-        border: 1px solid #EAEAEA;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        border-bottom: 5px solid #C5A059;
+        margin-bottom: 20px;
     }
+    .metric-card h2 { font-size: 48px; margin: 0; color: #C5A059; }
+    .metric-card p { font-size: 14px; text-transform: uppercase; font-weight: 700; margin-top: 10px; }
+
+    /* TABLE STYLING */
+    .stDataFrame, .stTable { border: 1px solid #DDE4ED; border-radius: 10px; }
     </style>
     """, unsafe_allow_html=True)
 
-# 3. PERMANENT HEADER (Logo on Right)
+# 3. HEADER (Logo on Right)
 st.markdown("""
-    <div class="header-box">
-        <div class="brand-group">
-            <h1 class="brand-main">HIRENEC SOLUTIONS LIMITED</h1>
-            <div class="brand-sub">Precision | People | Performance</div>
+    <div class="main-header">
+        <div class="brand-text">
+            <h1>Hirenec Solutions Limited</h1>
+            <p>Precision | People | Performance</p>
         </div>
-        <div class="logo-square">HS</div>
+        <div class="logo-container">
+            <img src="https://via.placeholder.com/150x80?text=HIRENEC+LOGO" width="150">
+        </div>
     </div>
-    <div class="contact-bar">
-        <div>📍 The Estate, Dickenson Road, Bangalore</div>
-        <div>📧 contact@hirenecsolutions.com | 📞 Director: Juliet Jackson</div>
+    <div style="background:#F8F9FA; padding:15px 80px; border-bottom:1px solid #DDD; font-weight:700; color:#002349;">
+        📍 The Estate, Bangalore | 📧 contact@hirenecsolutions.com | 👤 Director: Juliet Jackson
     </div>
     """, unsafe_allow_html=True)
 
-# 4. NAVIGATION
+# 4. NAVIGATION BAR
 with st.sidebar:
-    st.markdown("### 🖥️ PORTAL ACCESS")
-    page = st.radio("Navigation", ["HOME", "JOB BOARD", "RECRUITER HUB", "ADMIN PANEL"], label_visibility="collapsed")
+    st.markdown("## 🛡️ PORTAL CONTROL")
+    page = st.radio("SELECT VIEW", ["HOME PANEL", "JOB BOARD", "RECRUITER HUB", "SUPER ADMIN"], label_visibility="collapsed")
     st.divider()
-    if st.button("Logout"):
-        st.rerun()
+    st.info("System Status: Online & Secure")
+    if st.button("🔴 Logout System"): st.rerun()
 
-# 5. PAGE LOGIC (FULLY FILLED TABS)
-
-# --- HOME PAGE ---
-if page == "HOME":
+# 5. FUNCTIONAL PANELS
+if page == "HOME PANEL":
     st.write("##")
-    col_l, col_r = st.columns([2, 1])
-    with col_l:
-        st.markdown("### Executive Search & Strategic Hiring")
-        st.write("""
-        Hirenec Solutions Limited is Bangalore's premier recruitment firm. We provide a full-cycle 
-        Application Tracking System (ATS) and human capital management for global firms. 
-        Our mission is to deliver 'Unfiltered Truth' in talent acquisition.
-        """)
+    col1, col2 = st.columns([2, 1])
+    
+    with col1:
+        st.markdown("### 🏛️ Welcome to the Executive Gateway")
+        st.write("Managing the bridge between top-tier talent and global industry leaders from our headquarters in Bangalore.")
         
-        st.markdown("#### 🔑 Portal Login")
-        c_login, r_login = st.columns(2)
-        with c_login:
-            with st.expander("Candidate Login"):
-                st.text_input("Candidate Email")
-                st.text_input("Password", type="password")
-                st.button("Login as Candidate")
-        with r_login:
-            with st.expander("Recruiter Login"):
-                st.text_input("Client ID")
-                st.text_input("Access Key", type="password")
-                st.button("Login as Recruiter")
+        st.write("#### 🔑 Secure Access")
+        tab_cand, tab_rec = st.tabs(["Candidate Gateway", "Recruiter Access"])
+        with tab_cand:
+            st.text_input("Candidate Username/Email", placeholder="Enter your registered email")
+            st.text_input("Password", type="password")
+            st.button("Login as Candidate", use_container_width=True)
+        with tab_rec:
+            st.text_input("Recruiter/Admin ID", placeholder="HS-ADMIN-XXXX")
+            st.text_input("Security Key", type="password")
+            st.button("Authorized Login", use_container_width=True)
 
-    with col_r:
-        st.markdown('<div class="stat-card"><h3>10K+</h3><p>Verified Profiles</p></div>', unsafe_allow_html=True)
-        st.markdown('<div class="stat-card" style="margin-top:10px;"><h3>500+</h3><p>Partner Companies</p></div>', unsafe_allow_html=True)
+    with col2:
+        st.markdown('<div class="metric-card"><h2>10,000+</h2><p>Verified Candidates</p></div>', unsafe_allow_html=True)
+        st.markdown('<div class="metric-card"><h2>500+</h2><p>Corporate Partners</p></div>', unsafe_allow_html=True)
 
-    st.divider()
-    st.markdown("### Leadership: Director Juliet Jackson")
-    c1, c2 = st.columns([1, 3])
-    with c1:
-        st.image("https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400")
-    with c2:
-        st.write("""
-        Under the direction of **Juliet Jackson**, Hirenec Solutions Limited has scaled to become 
-        a key player in the US-India recruitment corridor. Her focus on responsive design and 
-        robust security ensures that both candidate and company data are managed with the highest integrity.
-        """)
-        st.info("“Precision in selection is the foundation of corporate excellence.”")
-
-# --- JOB BOARD ---
 elif page == "JOB BOARD":
-    st.title("🔍 Global Job Listing & Search")
-    st.write("Current active openings across all sectors.")
+    st.title("🔍 Live Job Board")
+    st.write("Filter and manage active recruitment vacancies.")
+    c1, c2 = st.columns(2)
+    c1.selectbox("Region", ["All Regions", "India (Bangalore)", "USA (Remote)", "UK"])
+    c2.text_input("Search Skills (e.g., Python, HR, Management)")
     
-    search, loc, exp = st.columns([2, 1, 1])
-    search.text_input("Keywords (e.g. Python, HR)")
-    loc.selectbox("Location", ["All", "Bangalore", "Remote (USA)", "Hyderabad"])
-    exp.selectbox("Experience", ["Any", "0-2 Yrs", "3-5 Yrs", "5-10 Yrs", "10+ Yrs"])
+    jobs_data = {
+        "Job ID": ["HS-101", "HS-102", "HS-103"],
+        "Title": ["Senior Operations Manager", "Technical Architect", "HR Director"],
+        "Company": ["Global FinTech", "Hirenec Partner", "Retail Giant"],
+        "Status": ["Active", "Interviewing", "Offer Phase"]
+    }
+    st.table(pd.DataFrame(jobs_data))
 
-    st.markdown("---")
-    # Simulated Job Postings
-    jobs = [
-        {"Role": "Senior Java Architect", "Company": "FinTech Corp", "Status": "Immediate"},
-        {"Role": "Operations Manager", "Company": "Hirenec Partner", "Status": "Open"},
-        {"Role": "HR Director", "Company": "Global Logistics", "Status": "New"}
-    ]
-    for j in jobs:
-        with st.container():
-            col_a, col_b = st.columns([3, 1])
-            col_a.markdown(f"#### {j['Role']}")
-            col_a.write(f"**Company:** {j['Company']} | **Type:** Full Time")
-            if col_b.button(f"Apply Now", key=j['Role']):
-                st.success("Application Form Opened.")
-            st.divider()
-
-# --- RECRUITER HUB ---
 elif page == "RECRUITER HUB":
-    st.title("🤝 Recruiter/Company Hub")
-    st.write("Manage your job postings and track applicants.")
+    st.title("🤝 Recruiter Command Hub")
+    st.markdown("#### Candidate Pipelines & Interview Tracking")
     
-    m1, m2, m3 = st.columns(3)
-    m1.metric("Active Postings", "12")
-    m2.metric("Pending Interviews", "45")
-    m3.metric("Offers Extended", "8")
-
-    st.markdown("### 📋 Application Tracking System (ATS)")
-    # Data Table for Candidates
-    data = {
-        "Candidate Name": ["Arjun Mehta", "Sana Khan", "Robert Wilson", "Priya Das"],
-        "Applied Role": ["Java Architect", "HR Lead", "Operations", "Java Architect"],
-        "Application Date": ["2026-03-25", "2026-03-28", "2026-03-29", "2026-03-30"],
-        "Status": ["Interview Scheduled", "Shortlisted", "Under Review", "New"]
+    rec_data = {
+        "Candidate": ["Rajesh Kumar", "Anita Singh", "Mark Thompson"],
+        "Role": ["Ops Manager", "Architect", "HR Director"],
+        "Joining Date": ["2026-04-15", "2026-05-01", "Pending"],
+        "Match Score": ["98%", "92%", "85%"]
     }
-    st.table(pd.DataFrame(data))
+    st.dataframe(pd.DataFrame(rec_data), use_container_width=True)
+    st.button("➕ Schedule New Interview")
+
+elif page == "SUPER ADMIN":
+    st.title("⚙️ Super Admin Control Panel")
+    st.write("Authorized Access Only: **Director Juliet Jackson**")
     
-    if st.button("➕ Post a New Job Listing"):
-        st.write("Opening Job Creation Form...")
-
-# --- ADMIN PANEL ---
-elif page == "ADMIN PANEL":
-    st.title("⚙️ Super Admin Control Center")
-    st.write("Welcome, Director Juliet Jackson.")
+    m1, m2, m3, m4 = st.columns(4)
+    m1.metric("Total Candidates", "10,245", "+150")
+    m2.metric("Active Companies", "512", "+12")
+    m3.metric("Revenue Growth", "28%", "Target Met")
+    m4.metric("Pending Approvals", "23", "Action Required")
     
-    # Critical Admin Metrics
-    st.markdown("#### 📊 System Overview")
-    a1, a2, a3, a4 = st.columns(4)
-    a1.metric("Total Candidates", "10,245")
-    a2.metric("Total Companies", "512")
-    a3.metric("Joining This Month", "84")
-    a4.metric("System Uptime", "99.9%")
-
-    st.markdown("### 🛠️ Candidate & User Management")
-    # Detailed Admin View
-    admin_data = {
-        "User ID": ["C-901", "C-902", "C-903", "R-101", "R-102"],
-        "User Name": ["John Doe", "Anita Rao", "Michael S.", "Tech Mahindra", "Amazon US"],
-        "Type": ["Candidate", "Candidate", "Candidate", "Company", "Company"],
-        "Last Login": ["2 Hours ago", "1 Day ago", "Just now", "Active", "Active"],
-        "Subscription": ["Free", "Free", "Free", "Premium", "Premium"]
-    }
-    st.dataframe(pd.DataFrame(admin_data), use_container_width=True)
-
-    with st.expander("Security & Logs"):
-        st.code("LOG [2026-03-30 00:45]: New Candidate Registered (ID: C-904)")
-        st.code("LOG [2026-03-30 01:10]: Admin Juliet Jackson Updated Theme Settings")
+    st.divider()
+    st.write("### 🛠️ System Management")
+    with st.expander("Manage Registered Companies"):
+        st.write("Listing all 512 corporate partners...")
+        st.button("Export Partner List (CSV)")
+    with st.expander("Security & Access Logs"):
+        st.code("LOG: 2026-03-30 10:15 - Successful Login by Juliet Jackson")
+        st.code("LOG: 2026-03-30 09:42 - New Candidate Profile Verified: Rajesh K.")
 
 # 6. FOOTER
-st.divider()
 st.markdown("""
-    <div style="text-align:center; color:#999; padding-bottom:50px;">
-        © 2026 Hirenec Solutions Limited | The Estate, Bangalore | 
-        <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+    <div style="text-align:center; padding:100px 0 50px 0; color:#888; font-size:12px;">
+        © 2026 Hirenec Solutions Limited | Bangalore HQ | Precision Recruitment Excellence
     </div>
     """, unsafe_allow_html=True)
+
