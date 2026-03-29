@@ -17,6 +17,9 @@ app_db = load_data("applications.csv", ["Name", "Email", "Job", "Status"])
 
 # 2. Professional Branding
 st.set_page_config(page_title="Hirenec Solutions | Live Portal", layout="wide")
+col1, col2 = st.columns([4, 1])
+with col2:
+    st.image("logo.png")
 st.markdown('''
     <style>
     .stApp { background: #0a192f; color: white; }
