@@ -1,117 +1,137 @@
 import streamlit as st
 
-# 1. PAGE SETUP (Professional Browser Tab Title)
-st.set_page_config(
-    page_title="Hirenec Solutions | Official Portal",
-    page_icon="💼",
-    layout="wide"
-)
+# 1. THE FOUNDATION
+st.set_page_config(page_title="Hirenec Solutions | Elite Recruitment", layout="wide")
 
-# 2. THE DESIGN ENGINE (Professional CSS - No "Bubbly" Fonts)
+# 2. THE "WOW" STYLING (The Best Professional Look)
 st.markdown("""
     <style>
-    /* Import Clean, Corporate Font */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Open+Sans:wght@300;400;600&display=swap');
 
-    /* Global Styling */
-    html, body, [class*="css"] {
-        font-family: 'Inter', sans-serif;
-        color: #1E1E1E;
+    /* Background and Global Font */
+    .stApp {
+        background-color: #050A18; /* Elegant Deep Dark Blue */
+        font-family: 'Open Sans', sans-serif;
     }
 
-    /* Professional Navbar Color */
-    [data-testid="stHeader"] {
-        background-color: #002D62;
+    /* Professional Sidebar */
+    [data-testid="stSidebar"] {
+        background-color: #FFFFFF !important;
+        border-right: 2px solid #002D62;
+    }
+    [data-testid="stSidebar"] .stRadio p {
+        color: #002D62 !important;
+        font-size: 18px !important;
+        font-weight: 600 !important;
     }
 
-    /* Sidebar Styling */
-    section[data-testid="stSidebar"] {
-        background-color: #F8F9FA;
-        border-right: 1px solid #E0E0E0;
-    }
-
-    /* Main Header - Sharp and Elegant */
-    .main-title {
-        font-size: 48px;
-        font-weight: 700;
-        color: #002D62;
-        letter-spacing: -1.5px;
+    /* BIG BOLD COMPANY NAME */
+    .company-name {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 64px !important;
+        font-weight: 800;
+        color: #FFFFFF;
         margin-bottom: 0px;
-        line-height: 1.2;
+        letter-spacing: -2px;
+        line-height: 1;
     }
 
-    /* Subtitle with a nice underline */
-    .sub-title {
-        font-size: 16px;
-        font-weight: 600;
-        color: #555555;
-        letter-spacing: 2px;
+    /* TAGLINE STYLING */
+    .tagline {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 18px;
+        font-weight: 400;
+        color: #4CC9FE; /* Electric blue accent */
+        letter-spacing: 5px;
         text-transform: uppercase;
-        border-bottom: 2px solid #002D62;
-        width: fit-content;
-        padding-bottom: 8px;
-        margin-bottom: 25px;
+        margin-top: 10px;
+        margin-bottom: 30px;
     }
 
-    /* Information Bar at the Bottom */
+    /* THE HERO SECTION CARD */
+    .hero-card {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 40px;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+    }
+
+    /* WELCOME TEXT */
+    .welcome-text {
+        color: #D1D1D1;
+        font-size: 20px;
+        line-height: 1.6;
+        max-width: 700px;
+    }
+
+    /* FOOTER BAR */
     .footer-bar {
-        background-color: #002D62;
+        background: linear-gradient(90deg, #002D62 0%, #0056b3 100%);
         color: white;
-        padding: 15px;
-        border-radius: 8px;
-        font-size: 14px;
-        margin-top: 40px;
+        padding: 20px;
+        border-radius: 12px;
+        margin-top: 50px;
         display: flex;
         justify-content: space-between;
+        font-weight: 600;
     }
 
-    /* Job Card Styling for the Job Board */
-    .job-card {
-        background: white;
-        padding: 20px;
-        border-radius: 10px;
-        border: 1px solid #E0E0E0;
-        box-shadow: 2px 2px 10px rgba(0,0,0,0.02);
-        margin-bottom: 20px;
+    /* BUTTON OVERRIDE */
+    .stButton>button {
+        background: #4CC9FE !important;
+        color: #050A18 !important;
+        font-weight: 700 !important;
+        border-radius: 50px !important;
+        border: none !important;
+        padding: 15px 40px !important;
+        transition: 0.3s all ease;
+    }
+    .stButton>button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(76, 201, 254, 0.3);
     }
     </style>
     """, unsafe_allow_html=True)
 
 # 3. SIDEBAR NAVIGATION
 with st.sidebar:
-    st.markdown("### Hirenec Menu")
-    choice = st.radio(
-        "Navigate to:",
-        ["Home", "Job Board", "Recruiter Hub", "Admin"],
-        index=0
-    )
+    st.markdown("### 🏢 NAVIGATION")
+    choice = st.radio("Go to:", ["HOME", "JOB BOARD", "RECRUITER HUB", "ADMIN"], label_visibility="collapsed")
     st.divider()
-    st.caption("v1.0.2 | © 2026 Hirenec Solutions")
+    st.markdown("#### Hirenec Solutions")
+    st.info("Directing professional growth since 2026.")
 
-# 4. PAGE CONTENT LOGIC
-if choice == "Home":
-    # Layout with an image and text
-    col1, col2 = st.columns([1, 2])
+# 4. MAIN PAGE CONTENT
+if choice == "HOME":
+    # Layout Header with Logo space
+    head_col1, head_col2 = st.columns([1, 5])
     
-    with col1:
-        # A professional office/recruitment image
-        st.image("https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=500", use_container_width=True)
-    
-    with col2:
-        st.markdown('<p class="main-title">HIRENEC SOLUTIONS</p>', unsafe_allow_html=True)
-        st.markdown('<p class="sub-title">Precision | People | Performance</p>', unsafe_allow_html=True)
-        
-        st.write("""
-        Welcome to the official recruitment portal of **Hirenec Solutions Pvt Ltd**. 
-        We specialize in bridging the gap between top-tier talent and industry-leading organizations. 
-        Explore our current openings or manage your hiring needs through our secure dashboard.
-        """)
-        
-        # Professional Call to Action
-        if st.button("View Current Openings"):
-            st.info("Redirecting to Job Board...")
+    with head_col1:
+        # A sleek logo placeholder
+        st.markdown("""<div style="background:#4CC9FE; width:80px; height:80px; border-radius:15px; display:flex; align-items:center; justify-content:center; font-weight:bold; color:#050A18; font-size:24px;">HS</div>""", unsafe_allow_html=True)
 
-    # Info Bar
+    with head_col2:
+        st.markdown('<p class="company-name">HIRENEC SOLUTIONS</p>', unsafe_allow_html=True)
+        st.markdown('<p class="tagline">PRECISION | PEOPLE | PERFORMANCE</p>', unsafe_allow_html=True)
+
+    # Hero Content
+    st.markdown("""
+        <div class="hero-card">
+            <p class="welcome-text">
+                Welcome to the digital gateway of <b>Hirenec Solutions Pvt Ltd</b>. 
+                We are a premier recruitment firm committed to connecting industry-leading 
+                enterprises with world-class professional talent. Our precision-driven 
+                approach ensures that every match fuels performance and growth.
+            </p>
+        </div>
+    """, unsafe_allow_html=True)
+
+    st.write(" ") # Spacer
+    if st.button("EXPLORE OPENINGS"):
+        st.balloons() # Just for a little "wow" when testing
+
+    # The Info Footer
     st.markdown(f"""
         <div class="footer-bar">
             <span>📍 The Estate, Dickenson Road, Bangalore</span>
@@ -119,20 +139,21 @@ if choice == "Home":
         </div>
     """, unsafe_allow_html=True)
 
-elif choice == "Job Board":
-    st.markdown('<p class="main-title">JOB BOARD</p>', unsafe_allow_html=True)
-    st.write("Browse our latest career opportunities.")
+elif choice == "JOB BOARD":
+    st.markdown('<p class="company-name" style="font-size:48px !important;">JOB BOARD</p>', unsafe_allow_html=True)
+    st.markdown('<p class="tagline">Your Next Career Move Starts Here</p>', unsafe_allow_html=True)
     
-    # Example Job Card
+    # Modern Job Card
     st.markdown("""
-        <div class="job-card">
-            <h3 style="margin:0; color:#002D62;">Senior Talent Acquisition Specialist</h3>
-            <p style="color:#666; font-size:14px;">Bangalore | Full-Time | Remote Friendly</p>
-            <p>Seeking an experienced recruiter to manage high-volume technical hiring for our US-based clients.</p>
+        <div class="hero-card" style="margin-bottom:20px;">
+            <h2 style="color:#4CC9FE; margin-bottom:5px;">Senior Technical Recruiter</h2>
+            <p style="color:#FFF;"><b>Location:</b> Remote / Bangalore | <b>Salary:</b> Competitive</p>
+            <p class="welcome-text">Leading the search for top-tier IT talent for global partners.</p>
         </div>
     """, unsafe_allow_html=True)
-    st.button("Apply Now", key="apply_1")
+    st.button("APPLY NOW")
 
 else:
-    st.title(choice)
-    st.write(f"This is the {choice} section. Content coming soon.")
+    st.markdown(f'<p class="company-name">{choice}</p>', unsafe_allow_html=True)
+    st.write("Section under construction.")
+
